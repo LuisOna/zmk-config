@@ -34,12 +34,12 @@
                 };
                 lower_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  [  |  ]  |  UP | HOME| END  |   |  =  |  7  |  8  |  9  |     | BKSP |
+// |  TAB |  [  |  ]  |  UP | HOME| END  |   |  =  |  7  |  8  |  9  | "|" | BKSP |
 // | SHFT |     | LFT | DWN | RGT | PGUP |   |  -  |  4  |  5  |  6  |     |  `   |
 // | CTRL |     |     |     |     | PGDWN|   |  /  |  1  |  2  |  3  | "|" |  ~   |
 //                    | GUI |RAISE| SPC  |   | ENT |  0  |  .  |
                         bindings = <
-   &kp TAB    &kp LBKT &kp RBKT      &kp UP       &kp HOME   &kp END       &kp EQUAL &kp N7   &kp N8   &kp N9 &trans   &kp BSPC
+   &kp TAB    &kp LBKT &kp RBKT      &kp UP       &kp HOME   &kp END       &kp EQUAL &kp N7   &kp N8   &kp N9 &kp PIPE &kp BSPC
    &kp LSHFT  &trans   &kp LEFT      &kp DOWN     &kp RIGHT  &kp PAGE_UP   &kp MINUS &kp N4   &kp N5   &kp N6 &trans   &kp GRAVE
    &kp LCTRL  &trans   &trans        &trans       &trans     &kp PAGE_DOWN &kp FSLH  &kp N1   &kp N2   &kp N3 &kp PIPE &kp TILDE
               &kp LGUI &to RAISE     &kp SPACE                         &kp RET   &kp N0   &kp DOT
