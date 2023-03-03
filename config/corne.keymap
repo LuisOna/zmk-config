@@ -28,20 +28,20 @@
                         bindings = <
    &kp TAB            &kp Q &kp W &kp E        &kp R      &kp T     &kp Y   &kp U      &kp I      &kp O   &kp P    &kp BSPC
    &mt LSHFT CAPSLOCK &kp A &kp S &lt NEXT D   &lt NUM F  &kp G     &kp H   &lt NUM J  &lt NEXT K &kp L   &kp SEMI &mt RSHFT SQT
-   &kp LCTRL          &kp Z &kp X &kp C        &kp V      &kp B     &kp N   &kp M      &kp COMMA  &kp DOT &kp FSLH &mt LCTRL ESC
+   &kp LCTRL          &kp Z &kp X &kp C        &kp V      &kp B     &kp N   &kp M      &kp COMMA  &kp DOT &kp FSLH &mt RCTRL ESC
                                   &kp LGUI     &to NUM    &kp SPACE &kp RET &kp DEL    &kp RALT
                         >;
                 };
                 lower_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  [  |  ]  |  UP | HOME| END  |   |  =  |  7  |  8  |  9  |     | BKSP |
-// | SHFT |     | LFT | DWN | RGT | PGUP |   |  -  |  4  |  5  |  6  |     |  `   |
-// | CTRL |     |     |     |     | PGDWN|   |  /  |  1  |  2  |  3  | "|" |  ~   |
+// |  TAB |  [  |  ]  |  UP | HOME| END  |   |  =  |  7  |  8  |  9  |     | BKSP     |
+// | SHFT |     | LFT | DWN | RGT | PGUP |   |  -  |  4  |  5  |  6  |  \  | SHFT / ` |
+// | CTRL |     |     |     |     | PGDWN|   |  /  |  1  |  2  |  3  | "|" | CTRL / ~ |
 //                    | GUI |RAISE| SPC  |   | ENT |  0  |  .  |
                         bindings = <
-   &kp TAB    &kp LBKT &kp RBKT      &kp UP       &kp HOME   &kp END       &kp EQUAL &kp N7   &kp N8   &kp N9 &trans   &kp BSPC
-   &kp LSHFT  &trans   &kp LEFT      &kp DOWN     &kp RIGHT  &kp PAGE_UP   &kp MINUS &kp N4   &kp N5   &kp N6 &trans   &kp GRAVE
-   &kp LCTRL  &trans   &trans        &trans       &trans     &kp PAGE_DOWN &kp FSLH  &kp N1   &kp N2   &kp N3 &kp PIPE &kp TILDE
+   &kp TAB    &kp LBKT &kp RBKT      &kp UP       &kp HOME   &kp END       &kp EQUAL &kp N7   &kp N8   &kp N9 &trans        &kp BSPC
+   &kp LSHFT  &trans   &kp LEFT      &kp DOWN     &kp RIGHT  &kp PAGE_UP   &kp MINUS &kp N4   &kp N5   &kp N6 &kp BACKSLASH &mt RSHIFT GRAVE
+   &kp LCTRL  &trans   &trans        &trans       &trans     &kp PAGE_DOWN &kp FSLH  &kp N1   &kp N2   &kp N3 &kp PIPE      &mt RCTRL TILDE
               &kp LGUI &to RAISE     &kp SPACE                         &kp RET   &kp N0   &kp DOT
                         >;
                 };
