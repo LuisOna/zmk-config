@@ -15,6 +15,15 @@
 #define NEXT    3
 
 / {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <NUM NEXT>;
+            then-layer = <RAISE>;
+        };
+    };
+};
+/ {
        
         keymap {
                 compatible = "zmk,keymap";
