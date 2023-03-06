@@ -41,7 +41,7 @@
                                   &kp LGUI     &to NUM    &kp SPACE &kp RET &kp DEL    &kp RALT
                         >;
                 };
-                lower_layer {
+                num_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  [  |  ]  |  UP | HOME| END  |   |  =  |  7  |  8  |  9  |     | BKSP     |
 // | SHFT |     | LFT | DWN | RGT | PGUP |   |  -  |  4  |  5  |  6  |  \  | SHFT / ` |
