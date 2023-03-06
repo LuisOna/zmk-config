@@ -16,12 +16,12 @@
 
 / {
     macros {
-        zed_em_kay: zed_em_kay {
+        zed_em_kay: regexp {
             label = "ZM_zed_em_kay";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&kp Z &kp M &kp K>;
+                = <&kp r &kp e &kp g &kp e &kp x &kp p &kp UNDERSCORE &kp l &k p &kp i &kp k &kp e &kp LPAR &kp , &kp SQT &kp SQT &kp , &kp SQT &kp i &kp SQT &kp RPAR>;
         };
     };
 };
@@ -76,7 +76,7 @@
 // | SHFT |BLET |     |     |     |     |   |  _  |  +  |  {  |  }  |   |   |
 //                    | GUI |NEXT | SPC |   | ENT |     | ALT |
                         bindings = <
-   &kp TAB    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT      &zed_em_kay &kp AMPS  &kp KP_MULTIPLY &kp LPAR &trans &trans
+   &kp TAB    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT      &regexp &kp AMPS  &kp KP_MULTIPLY &kp LPAR &trans &trans
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans      &trans    &trans          &trans   &trans &trans
    &kp LSHFT  &out OUT_TOG &trans       &trans       &trans       &trans         &kp UNDER   &kp PLUS  &kp LBRC        &kp RBRC &trans &trans
                     	      &kp LGUI     &to DEFAULT     &kp SPACE                   &kp RET     &trans    &kp RALT
