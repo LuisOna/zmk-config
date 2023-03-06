@@ -15,11 +15,13 @@
 #define RAISE   3
 
 / {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <NUM NEXT>;
-            then-layer = <RAISE>;
+    macros {
+        zed_em_kay: zed_em_kay {
+            label = "ZM_zed_em_kay";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&kp Z &kp M &kp K>;
         };
     };
 };
@@ -30,15 +32,15 @@
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB          |  Q  |  W  |  E      |  R     |  T  |   |  Y  |  U    |  I   |  O  |  P  | BKSP      |
-// | SHFT/CAPSLOCK |  A  |  S  | NEXT D  | NUM F  |  G  |   |  H  | NUM J |NEXT K|  L  |  ;  |  ' /SHFT  |
-// | CTRL          |  Z  |  X  |  C      |  V     |  B  |   |  N  |  M    |  ,   |  .  |  /  | ESC / CTRL|
-//                             | GUI     | LWR    | SPC |   | ENT | DEL   | ALT  |
+// |  TAB          |  Q  |  W      |  E      |  R     |  T  |   |  Y  |  U    |  I   |  O  |  P  | BKSP      |
+// | SHFT/CAPSLOCK |  A  | RAISE S | NEXT D  | NUM F  |  G  |   |  H  | NUM J |NEXT K|  L  |  ;  |  ' /SHFT  |
+// | CTRL          |  Z  |  X      |  C      |  V     |  B  |   |  N  |  M    |  ,   |  .  |  /  | ESC / CTRL|
+//                                 | GUI     | LWR    | SPC |   | ENT | DEL   | ALT  |
                         bindings = <
-   &kp TAB            &kp Q &kp W &kp E        &kp R      &kp T     &kp Y   &kp U      &kp I      &kp O   &kp P    &kp BSPC
-   &mt LSHFT CAPSLOCK &kp A &kp S &lt NEXT D   &lt NUM F  &kp G     &kp H   &lt NUM J  &lt NEXT K &kp L   &kp SEMI &mt RSHFT SQT
-   &kp LCTRL          &kp Z &kp X &kp C        &kp V      &kp B     &kp N   &kp M      &kp COMMA  &kp DOT &kp FSLH &mt RCTRL ESC
-                                  &kp LGUI     &to NUM    &kp SPACE &kp RET &kp DEL    &kp RALT
+   &kp TAB            &kp Q &kp W        &kp E      &kp R      &kp T     &kp Y   &kp U      &kp I      &kp O   &kp P    &kp BSPC
+   &mt LSHFT CAPSLOCK &kp A &lt RAISE S  &lt NEXT D &lt NUM F  &kp G     &kp H   &lt NUM J  &lt NEXT K &lt RAISE L   &kp SEMI &mt RSHFT SQT
+   &kp LCTRL          &kp Z &kp X        &kp C      &kp V      &kp B     &kp N   &kp M      &kp COMMA  &kp DOT &kp FSLH &mt RCTRL ESC
+                                         &kp LGUI   &kp LALT   &kp SPACE &kp RET &kp DEL    &kp RALT
                         >;
                 };
                 num_layer {
@@ -69,12 +71,12 @@
                 };
                 raise_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |   |   |
+// |  TAB |  !  |  @  |  #  |  $  |  %  |   | MAC |  &  |  *  |  (  |   |   |
 // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |     |     |     |     |   |   |
 // | SHFT |BLET |     |     |     |     |   |  _  |  +  |  {  |  }  |   |   |
 //                    | GUI |NEXT | SPC |   | ENT |     | ALT |
                         bindings = <
-   &kp TAB    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT      &kp CARET   &kp AMPS  &kp KP_MULTIPLY &kp LPAR &trans &trans
+   &kp TAB    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT      &zed_em_kay &kp AMPS  &kp KP_MULTIPLY &kp LPAR &trans &trans
    &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans      &trans    &trans          &trans   &trans &trans
    &kp LSHFT  &out OUT_TOG &trans       &trans       &trans       &trans         &kp UNDER   &kp PLUS  &kp LBRC        &kp RBRC &trans &trans
                     	      &kp LGUI     &to DEFAULT     &kp SPACE                   &kp RET     &trans    &kp RALT
