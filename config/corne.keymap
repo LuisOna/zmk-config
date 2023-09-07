@@ -15,68 +15,59 @@
 #define RAISE   3
 
 / {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <NUM NEXT>;
-            then-layer = <RAISE>;
-        };
-    };
-};
-/ {
        
         keymap {
                 compatible = "zmk,keymap";
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB          |  Q  |  W  |  E      |  R     |  T  |   |  Y  |  U    |  I   |  O  |  P  | BKSP      |
-// | SHFT/CAPSLOCK |  A  |  S  | NEXT D  | NUM F  |  G  |   |  H  | NUM J |NEXT K|  L  |  ;  |  ' /SHFT  |
-// | CTRL          |  Z  |  X  |  C      |  V     |  B  |   |  N  |  M    |  ,   |  .  |  /  | ESC / CTRL|
-//                             | GUI     | LWR    | SPC |   | ENT | DEL   | ALT  |
+// |  TAB          |  Q  |  W      |  E      |  R     |  T  |   |  Y  |  U    |  I   |  O        |  P  | BKSP      |
+// | SHFT/CAPSLOCK |  A  | RAISE S | NEXT D  | NUM F  |  G  |   |  H  | NUM J |NEXT K|  RAISE L  |  ;  |  ' /SHFT  |
+// | CTRL          |  Z  |  X      |  C      |  V     |  B  |   |  N  |  M    |  ,   |  .        |  /  | ESC / CTRL|
+//                                 | GUI     | L ALT  | SPC |   | ENT | DEL   |R ALT |
                         bindings = <
-   &kp TAB            &kp Q &kp W &kp E        &kp R      &kp T     &kp Y   &kp U      &kp I      &kp O   &kp P    &kp BSPC
-   &mt LSHFT CAPSLOCK &kp A &kp S &lt NEXT D   &lt NUM F  &kp G     &kp H   &lt NUM J  &lt NEXT K &kp L   &kp SEMI &mt RSHFT SQT
-   &kp LCTRL          &kp Z &kp X &kp C        &kp V      &kp B     &kp N   &kp M      &kp COMMA  &kp DOT &kp FSLH &mt RCTRL ESC
-                                  &kp LGUI     &to NUM    &kp SPACE &kp RET &kp DEL    &kp RALT
+   &kp TAB            &kp Q &kp W        &kp E      &kp R      &kp T     &kp Y   &kp U      &kp I      &kp O        &kp P    &kp BSPC
+   &mt LSHFT CAPSLOCK &kp A &lt RAISE S  &lt NEXT D &lt NUM F  &kp G     &kp H   &lt NUM J  &lt NEXT K &lt RAISE L  &kp SEMI &mt RSHFT SQT
+   &kp LCTRL          &kp Z &kp X        &kp C      &kp V      &kp B     &kp N   &kp M      &kp COMMA  &kp DOT      &kp FSLH &mt RCTRL ESC
+                                         &kp LGUI   &kp LALT   &kp SPACE &kp RET &kp DEL    &kp RALT
                         >;
                 };
                 num_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  [  |  ]  |  UP | HOME| END  |   |  =  |  7  |  8  |  9  |     | BKSP     |
 // | SHFT |     | LFT | DWN | RGT | PGUP |   |  -  |  4  |  5  |  6  |  \  | SHFT / ` |
-// | CTRL |     |     |     |     | PGDWN|   |  /  |  1  |  2  |  3  | "|" | CTRL / ~ |
+// | CTRL |     |     |     | INS | PGDWN|   |  /  |  1  |  2  |  3  | "|" | CTRL / ~ |
 //                    | GUI |RAISE| SPC  |   | ENT |  0  |  .  |
                         bindings = <
    &kp TAB    &kp LBKT &kp RBKT      &kp UP       &kp HOME   &kp END       &kp EQUAL &kp N7   &kp N8   &kp N9 &trans        &kp BSPC
    &kp LSHFT  &trans   &kp LEFT      &kp DOWN     &kp RIGHT  &kp PAGE_UP   &kp MINUS &kp N4   &kp N5   &kp N6 &kp BACKSLASH &mt RSHIFT GRAVE
-   &kp LCTRL  &trans   &trans        &trans       &trans     &kp PAGE_DOWN &kp FSLH  &kp N1   &kp N2   &kp N3 &kp PIPE      &mt RCTRL TILDE
-              &kp LGUI &to NEXT     &kp SPACE                         &kp RET   &kp N0   &kp DOT
+   &kp LCTRL  &trans   &trans        &trans       &kp INS    &kp PAGE_DOWN &kp FSLH  &kp N1   &kp N2   &kp N3 &kp PIPE      &mt RCTRL TILDE
+              &kp LGUI &to NEXT      &kp SPACE                         &kp RET   &kp N0   &kp DOT
                         >;
                 };
                 next_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  [  |  ]  |  UP |     |     |   |PSCRN|  F7  |  F8  |  F9  |  F10   | BKSP |
-// | SHFT |     | LFT | DWN | RGT |     |   |     |  F4  |  F5  |  F6  |  F11   |      |
-// | CTRL |     |     |     |     |     |   |     |  F1  |  F2  |  F3  |  F12   |      |
-//                    | GUI |     | SPC |   |     |      |      |
+// |  TAB |  [  |  ]  |  UP |     |     |   |PSCRN |  F7  |  F8  |  F9  |  F10   | BKSP |
+// | SHFT |     | LFT | DWN | RGT |     |   |SCRLCK|  F4  |  F5  |  F6  |  F11   |      |
+// | CTRL |     |     |     |     |     |   |      |  F1  |  F2  |  F3  |  F12   |      |
+//                    | GUI |     | SPC |   |      |      |      |
                         bindings = <
    &kp TAB    &kp LBKT &kp RBKT      &kp UP       &trans     &trans    &kp PSCRN &kp F7   &kp F8   &kp F9 &kp F10 &kp BSPC
-   &kp LSHFT  &trans   &kp LEFT      &kp DOWN     &kp RIGHT  &trans    &trans    &kp F4   &kp F5   &kp F6 &kp F11 &trans
+   &kp LSHFT  &trans   &kp LEFT      &kp DOWN     &kp RIGHT  &trans    &kp SLCK  &kp F4   &kp F5   &kp F6 &kp F11 &trans
    &kp LCTRL  &trans   &trans        &trans       &trans     &trans    &trans    &kp F1   &kp F2   &kp F3 &kp F12 &trans
               &kp LGUI &to RAISE   &kp SPACE                         &trans    &trans   &trans
                         >;
                 };
                 raise_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |   |   |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |     |     |     |     |   |   |
-// | SHFT |BLET |     |     |     |     |   |  _  |  +  |  {  |  }  |   |   |
-//                    | GUI |NEXT | SPC |   | ENT |     | ALT |
+// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  blk   |  blk  |  volume up   |  (  |   |   |
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   |        |       |  volume dwn  |     |   |   |
+// | SHFT |BLET |     |     |     |     |   |  _     |  +    |  {           |  }  |   |   |
+//                    | GUI |NEXT | SPC |   | ENT    |       | ALT          |
                         bindings = <
-   &kp TAB    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT      &kp CARET   &kp AMPS  &kp KP_MULTIPLY &kp LPAR &trans &trans
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans      &trans    &trans          &trans   &trans &trans
-   &kp LSHFT  &out OUT_TOG &trans       &trans       &trans       &trans         &kp UNDER   &kp PLUS  &kp LBRC        &kp RBRC &trans &trans
+   &kp TAB    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT      &trans      &trans    &kp C_VOLUME_UP      &kp LPAR &trans &trans
+   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans      &trans    &kp C_VOLUME_DOWN    &trans   &trans &trans
+   &kp LSHFT  &out OUT_TOG &trans       &trans       &trans       &trans         &kp UNDER   &kp PLUS  &kp LBRC             &kp RBRC &trans &trans
                     	      &kp LGUI     &to DEFAULT     &kp SPACE                   &kp RET     &trans    &kp RALT
                         >;
                 };
